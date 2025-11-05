@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lingzhen Zhu's Personal Portal</title>
   <meta name="description" content="A modern personal portal linking Homepage, Mail, Private Cloud, AI Lab, and Network Gateway." />
+  <link rel="icon" type="image/x-icon" href="z.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -60,8 +61,36 @@
   </script>
   <style>
     /* base background + safe area support for full-bleed on mobile */
-    html, body { background:#06080f; height:100%; }
-    body { padding-bottom: env(safe-area-inset-bottom); padding-top: env(safe-area-inset-top); }
+    /* html, body { background:#06080f; height:100%; } */
+    /* body { padding-bottom: env(safe-area-inset-bottom); padding-top: env(safe-area-inset-top); } */
+    html { 
+      background: #06080f; 
+      height: 100%; 
+    }
+    body { 
+      background: #06080f;
+      min-height: 100vh;
+      padding-bottom: env(safe-area-inset-bottom); 
+      padding-top: env(safe-area-inset-top); 
+    }
+    /* add viewport-fit=cover for device support */
+    @supports (padding-top: env(safe-area-inset-top)) {
+      body {
+        padding-top: calc(env(safe-area-inset-top));
+        padding-bottom: calc(env(safe-area-inset-bottom));
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: env(safe-area-inset-top);
+        background: #06080f;
+        z-index: 999;
+      }
+    }
     /* subtle grain for depth */
     .grain:before{content:'';position:fixed;inset:-50%;pointer-events:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.035"/></svg>');opacity:.6;mix-blend-mode:overlay;}
   </style>
@@ -71,7 +100,11 @@
   <header class="relative z-10">
     <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
       <a href="#" class="group inline-flex items-center gap-3">
-        <div class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700 shadow-xl overflow-hidden">
+        <!-- logo.png -->
+        <div class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700 shadow-xl overflow-hidden flex items-center justify-center">
+          <!-- use logo -->
+          <img src="z.ico" alt="Logo" class="w-full h-full object-contain p-1" onerror="this.style.display='none'">
+          <!-- failed to use logo -->
           <div class="absolute inset-0 -skew-x-12 opacity-40 bg-white/40 animate-shine"></div>
         </div>
         <div>
@@ -124,7 +157,7 @@
         <div class="pointer-events-none absolute -bottom-10 -right-8 w-40 h-40 rounded-full bg-gradient-to-tr from-sky-500/20 to-fuchsia-500/20 blur-2xl"></div>
       </a>
 
-      <!-- Courier (Not Available) -->
+      <!-- Courier (Unavailable) -->
       <button data-soon name="Courier" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1 text-left">
         <div class="flex items-center justify-between">
           <div class="leading-tight">
@@ -135,12 +168,12 @@
         </div>
         <p class="mt-3 text-sm leading-relaxed text-white/70">Mail suite on your domain. Private inboxes and aliases.</p>
         <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/80 ring-1 ring-white/10">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Not Available
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Unavailable
         </span>
         <div class="pointer-events-none absolute -bottom-10 -right-8 w-40 h-40 rounded-full bg-gradient-to-tr from-indigo-500/15 to-sky-500/15 blur-2xl"></div>
       </button>
 
-      <!-- Vault (Not Available) -->
+      <!-- Vault (Unavailable) -->
       <button data-soon name="Vault" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1 text-left">
         <div class="flex items-center justify-between">
           <div class="leading-tight">
@@ -151,12 +184,12 @@
         </div>
         <p class="mt-3 text-sm leading-relaxed text-white/70">Secure storage for files, photos, and collaboration.</p>
         <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/80 ring-1 ring-white/10">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Not Available
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Unavailable
         </span>
         <div class="pointer-events-none absolute -bottom-10 -right-8 w-40 h-40 rounded-full bg-gradient-to-tr from-fuchsia-500/15 to-rose-500/15 blur-2xl"></div>
       </button>
 
-      <!-- Aquila (Not Available) -->
+      <!-- Aquila (Unavailable) -->
       <button data-soon name="Aquila" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1 text-left">
         <div class="flex items-center justify-between">
           <div class="leading-tight">
@@ -167,12 +200,12 @@
         </div>
         <p class="mt-3 text-sm leading-relaxed text-white/70">Online inference, interactive demos, and model endpoints.</p>
         <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/80 ring-1 ring-white/10">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Not Available
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Unavailable
         </span>
         <div class="pointer-events-none absolute -bottom-10 -right-8 w-40 h-40 rounded-full bg-gradient-to-tr from-sky-500/15 to-indigo-500/15 blur-2xl"></div>
       </button>
 
-      <!-- Nexus (Not Available) -->
+      <!-- Nexus (Unavailable) -->
       <button data-soon name="Nexus" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1 sm:col-span-2 lg:col-span-1 text-left">
         <div class="flex items-center justify-between">
           <div class="leading-tight">
@@ -183,7 +216,7 @@
         </div>
         <p class="mt-3 text-sm leading-relaxed text-white/70">Access gateway for VPN/node profiles and client configurations.</p>
         <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/80 ring-1 ring-white/10">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Not Available
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Unavailable
         </span>
         <div class="pointer-events-none absolute -bottom-10 -right-8 w-40 h-40 rounded-full bg-gradient-to-tr from-emerald-500/15 to-teal-500/15 blur-2xl"></div>
       </button>
@@ -204,8 +237,8 @@
         </div>
       </a-->
 
-      <!-- Template: Not Available card example (duplicate when preparing a new module) -->
-      <!-- Usage: Keep the button element and the Not Available pill; change the name/labels. Place at the end of the grid. -->
+      <!-- Template: Unavailable card example (duplicate when preparing a new module) -->
+      <!-- Usage: Keep the button element and the Unavailable pill; change the name/labels. Place at the end of the grid. -->
       <!--button data-soon name="ModuleName" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1 text-left">
         <div class="flex items-start justify-between text-left">
           <div class="leading-tight text-left">
@@ -216,31 +249,42 @@
         </div>
         <p class="mt-3 text-sm leading-relaxed text-white/70">Describe the upcoming capability here.</p>
         <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/80 ring-1 ring-white/10">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Not Available
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Unavailable
         </span>
       </button-->
     </div>
   </section>
 
   <!-- ABOUT / FOOTER -->
-  <section id="about" class="relative py-10 md:py-14">
-    <div class="mx-auto max-w-4xl px-6 text-center">
+  <!--section id="about" class="relative py-10 md:py-14">
+    <div class="mx-auto max-w-4xl px-6 text-center"-->
       <!--div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/70 ring-1 ring-white/10 mb-4">Minimal Surface · High Fidelity</div>
       <p class="text-white/60 text-sm leading-relaxed">
         This portal is designed as a fast, resilient entry point to a growing personal infrastructure. Services may be staged, proxied, or independently deployed under subdomains. All traffic is served over TLS at the edge.
       </p-->
-      <div class="mt-6 text-xs text-white/40">© <span id="y"></span> Lingzhen Zhu. All rights reserved.</div>
+      <!--div class="mt-6 text-xs text-white/40">© <span id="y"></span> Lingzhen Zhu. All rights reserved.</div -->
+  <section id="about" class="relative py-10 md:py-14">
+    <div class="mx-auto max-w-4xl px-6 text-center">
+      <!-- add Cloudflare -->
+      <div class="mt-6 text-xs text-white/40 flex flex-col items-center gap-2">
+        <div>© <span id="y"></span> Lingzhen Zhu. All rights reserved.</div>
+        <div class="flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity">
+          <span>Protected by</span>
+          <img src="cloudflare.png" alt="Cloudflare" class="h-4 w-auto inline-block" />
+          <span class="font-medium">Cloudflare</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Not Available modal -->
+  <!-- Unavailable modal -->
   <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 px-6">
     <div class="w-full max-w-md rounded-2xl bg-white/5 backdrop-blur-md ring-1 ring-white/10 p-6 text-center shadow-2xl">
       <div class="mx-auto mb-4 w-12 h-12 rounded-2xl bg-amber-400/20 ring-1 ring-amber-300/30 flex items-center justify-center">
         <svg class="w-6 h-6 text-amber-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
-      <h4 class="text-lg font-semibold" id="modalTitle">Not Available</h4>
-      <p class="mt-2 text-sm text-white/70" id="modalBody">This section is currently not available. Please check back later.</p>
+      <h4 class="text-lg font-semibold" id="modalTitle">Unavailable</h4>
+      <p class="mt-2 text-sm text-white/70" id="modalBody">This section is temporarily unavailable due to maintenance or updates. Please check back later for access.</p>
       <button class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 text-sm text-white ring-1 ring-white/15 hover:bg-white/15" onclick="closeSoon()">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         Close
@@ -252,13 +296,13 @@
     // current year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Not Available modal logic
+    // Unavailable modal logic
     const modal = document.getElementById('modal');
     const title = document.getElementById('modalTitle');
     const body = document.getElementById('modalBody');
 
     function openSoon(name){
-      title.textContent = `${name} · Not Available`;
+      title.textContent = `${name} · Unavailable`;
       modal.classList.remove('hidden');
       modal.classList.add('flex');
     }
