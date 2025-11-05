@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lingzhen Zhu's Personal Portal</title>
   <meta name="description" content="A modern personal portal linking Homepage, Mail, Private Cloud, AI Lab, and Network Gateway." />
+  <meta name="theme-color" content="#06080f" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -59,11 +60,14 @@
     }
   </script>
   <style>
+    /* base background + safe area support for full-bleed on mobile */
+    html, body { background:#06080f; height:100%; }
+    body { padding-bottom: env(safe-area-inset-bottom); padding-top: env(safe-area-inset-top); }
     /* subtle grain for depth */
     .grain:before{content:'';position:fixed;inset:-50%;pointer-events:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.035"/></svg>');opacity:.6;mix-blend-mode:overlay;}
   </style>
 </head>
-<body class="min-h-screen bg-[radial-gradient(125%_125%_at_50%_10%,#0b1220_10%,#070b13_40%,#06080f_100%)] text-white font-sans antialiased grain">
+<body class="min-h-[100svh] bg-[radial-gradient(125%_125%_at_50%_10%,#0b1220_10%,#070b13_40%,#06080f_100%)] text-white font-sans antialiased grain">
   <!-- NAV / BRAND -->
   <header class="relative z-10">
     <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
@@ -76,12 +80,7 @@
           <div class="text-xs text-white/60 -mt-1">Unified Personal Digital Infrastructure Landing Portal</div>
         </div>
       </a>
-      <div class="hidden md:flex items-center gap-4 text-sm text-white/70">
-        <a href="#sections" class="hover:text-white transition">Sections</a>
-        <a href="#about" class="hover:text-white transition">About</a>
-        <span class="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/70 ring-1 ring-white/10">Edge CDN<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span></span>
       </div>
-    </div>
   </header>
 
   <!-- HERO -->
@@ -92,11 +91,45 @@
     <div class="mx-auto max-w-7xl px-6 text-center">
       <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1]">
         Welcome to My Portal for
-        <span class="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400">Personal Digital Infrastructure</span>
+        <span class="block mt-3 bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-400">Personal Digital Infrastructure</span>
       </h1>
-      <p class="mt-5 text-base md:text-lg text-white/70 max-w-2xl mx-auto">
+      <p class="mt-7 text-base md:text-lg text-white/70 max-w-2xl mx-auto">
         Navigate to the desired service below
       </p>
+      
+      <!-- Template: Live card example (duplicate and edit when a new service goes live) -->
+      <!-- Usage: Replace href, title, and description; keep the Live badge. -->
+      <a href="#" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 hover:ring-white/20 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1">
+        <div class="flex items-start justify-between text-left">
+          <div class="leading-tight text-left">
+            <div class="font-serif text-3xl md:text-4xl font-bold text-white">ServiceName</div>
+            <div class="text-lg md:text-xl text-white/80 tracking-wide">Short Functional Name</div>
+          </div>
+          <svg class="w-6 h-6 text-sky-300 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+        </div>
+        <p class="mt-3 text-sm leading-relaxed text-white/70">Replace this with a one‑sentence description.</p>
+        <div class="mt-5 flex items-center gap-2 text-xs text-emerald-300/90">
+          <span class="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2.5 py-1 ring-1 ring-emerald-300/20">Live</span>
+          <span class="text-white/40">your.domain.tld</span>
+        </div>
+      </a>
+
+      <!-- Template: Coming Soon card example (duplicate when preparing a new module) -->
+      <!-- Usage: Keep the button element and the Coming Soon pill; change the name/labels. -->
+      <button data-soon name="ModuleName" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1 text-left">
+        <div class="flex items-start justify-between text-left">
+          <div class="leading-tight text-left">
+            <div class="font-serif text-3xl md:text-4xl font-bold text-white">ModuleName</div>
+            <div class="text-lg md:text-xl text-white/80 tracking-wide">Functional Subtitle</div>
+          </div>
+          <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h3m12 0h3M7.5 7.5l9 9m0-9l-9 9M12 3v3m0 12v3"/></svg>
+        </div>
+        <p class="mt-3 text-sm leading-relaxed text-white/70">Describe the upcoming capability here.</p>
+        <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/80 ring-1 ring-white/10">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span> Coming Soon
+        </span>
+      </button>
+
     </div>
   </section>
 
@@ -155,12 +188,15 @@
 
       <!-- Aquila (coming soon) -->
       <button data-soon name="Aquila" class="group relative overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 md:p-7 shadow-xl-soft backdrop-blur-md transition transform hover:-translate-y-1 text-left">
-        <div class="flex items-center justify-between">
-          <div class="leading-tight">
+        <div class="flex items-start justify-between text-left">
+          <div class="leading-tight text-left">
             <div class="font-serif text-3xl md:text-4xl font-bold text-white">Aquila</div>
             <div class="text-lg md:text-xl text-white/80 tracking-wide">Edge Artificial Intelligence Service</div>
           </div>
-          <svg class="w-6 h-6 text-white/50 group-hover:text-white/70 transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v4.5m0 9V21m9-9h-4.5M7.5 12H3m13.5-6l-3 3m0 6l3 3M7.5 6l3 3m0 6l-3 3"/></svg>
+          <!-- brain icon -->
+          <svg class="w-6 h-6 text-white/70 group-hover:text-white/90 transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 3.5a2.5 2.5 0 0 0-2.5 2.5v.25C5.7 6.7 5 7.8 5 9c0 1 .4 1.9 1 2.6V13a3 3 0 0 0 3 3v.5A2.5 2.5 0 0 0 11.5 19H12a3 3 0 0 0 3-3v-1.2c1.2-.4 2-1.5 2-2.8v-.5c.6-.7 1-1.6 1-2.5a3 3 0 0 0-3-3c-.3 0-.7.1-1 .2A2.5 2.5 0 0 0 9.5 3.5Z"/>
+          </svg>
         </div>
         <p class="mt-3 text-sm leading-relaxed text-white/70">Online inference, interactive demos, and model endpoints.</p>
         <span class="mt-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1 text-xs text-white/80 ring-1 ring-white/10">
@@ -189,15 +225,7 @@
   </section>
 
   <!-- ABOUT / FOOTER -->
-  <section id="about" class="relative py-10 md:py-14">
-    <div class="mx-auto max-w-4xl px-6 text-center">
-      <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/70 ring-1 ring-white/10 mb-4">Minimal Surface · High Fidelity</div>
-      <p class="text-white/60 text-sm leading-relaxed">
-        This portal is designed as a fast, resilient entry point to a growing personal infrastructure. Services may be staged, proxied, or independently deployed under subdomains. All traffic is served over TLS at the edge.
-      </p>
-      <div class="mt-6 text-xs text-white/40">© <span id="y"></span> LZZHU. All rights reserved.</div>
-    </div>
-  </section>
+  
 
   <!-- Coming Soon modal -->
   <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 px-6">
